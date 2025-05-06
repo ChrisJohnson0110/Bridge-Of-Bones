@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MapNodeInteractor : MonoBehaviour
 {
-    [SerializeField] private GameObject interactionPromptUI;
-
     private MapNode currentNode;
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +12,7 @@ public class MapNodeInteractor : MonoBehaviour
         if (node != null && node.IsUnlocked())
         {
             currentNode = node;
-            if (interactionPromptUI) interactionPromptUI.SetActive(true);
+            MapNodeDisplay.instance.UpdateDisplay(currentNode, true);
         }
     }
 
@@ -23,7 +21,7 @@ public class MapNodeInteractor : MonoBehaviour
         if (other.GetComponent<MapNode>() == currentNode)
         {
             currentNode = null;
-            if (interactionPromptUI) interactionPromptUI.SetActive(false);
+            MapNodeDisplay.instance.UpdateDisplay(currentNode, false);
         }
     }
 

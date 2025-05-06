@@ -17,7 +17,7 @@ public class MapDataSO : ScriptableObject
     [Header("Completion Info")]
     public float bestTime;
     public int unitsUsed;
-    public int skullRating;
+    public int completionRate;
 
     public bool IsUnlocked(Dictionary<string, int> playerScores)
     {

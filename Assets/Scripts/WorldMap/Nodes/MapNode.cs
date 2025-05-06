@@ -26,7 +26,7 @@ public class MapNode : MonoBehaviour
         {
             return true;
         }
-        return mapData.IsUnlocked(PlayerProgress.instance.scores);
+        return mapData.IsUnlocked(PlayerProgress.instance.highscores);
     }
 
     private void UpdateVisuals()

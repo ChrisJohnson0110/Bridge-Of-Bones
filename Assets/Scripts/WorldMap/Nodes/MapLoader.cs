@@ -15,7 +15,7 @@ public class MapLoader : MonoBehaviour
 
     public void LoadMap(MapDataSO mapData)
     {
-        if (!mapData.IsUnlocked(PlayerProgress.instance.scores))
+        if (!mapData.IsUnlocked(PlayerProgress.instance.highscores))
         {
             Debug.Log("Map is locked.");
             return;
