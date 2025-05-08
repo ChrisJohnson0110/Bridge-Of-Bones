@@ -6,6 +6,7 @@ using UnityEngine;
 public class DrawCard : Card
 {
     public int drawAmount;
+    public int otherAmount;
     public DrawType drawType;
 
     public override void PlayCard()

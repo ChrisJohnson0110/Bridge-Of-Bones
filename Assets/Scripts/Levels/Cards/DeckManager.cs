@@ -38,6 +38,8 @@ public class DeckManager : MonoBehaviour
         Card drawnCard = deck[0];
         hand.Add(drawnCard);
         deck.RemoveAt(0);
+
+        //TODO visually add card here
     }
 
     public void StartGame()
