@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//interface with the deck
 public class CardPlayer : MonoBehaviour
 {
     public static CardPlayer instance;
