@@ -10,17 +10,23 @@ public class MouseObjectDetection : MonoBehaviour
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject cardPrefab;
+
     private GameObject pickedupCard;
+    private MouseController mouseControllerRef;
 
     private void Start()
     {
         pickedupCard = Instantiate(cardPrefab);
         pickedupCard.SetActive(false);
+        mouseControllerRef = MouseController.instance;
     }
 
     void Update()
     {
-        if (MouseController.instance.isMouseActive == true)
+        if (mouseControllerRef == null)
+            return;
+
+        if (mouseControllerRef.isMouseActive == true)
         {
             if (Input.GetMouseButtonDown(0))
             {
