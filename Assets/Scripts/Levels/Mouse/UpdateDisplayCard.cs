@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+//visualal update the display info on a card
 public class UpdateDisplayCard : MonoBehaviour
 {
     public static UpdateDisplayCard instance;

@@ -4,15 +4,34 @@ using UnityEngine;
 
 public class CardHandDisplay : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public static CardHandDisplay instance;
+
+    private void Awake()
     {
-        
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        
+        //create hand number of place holders
+        //enable when card added
+        //remove when removed
+        //add update visuals component if not already
+    }
+
+    public void AddCardToHandVisual(Card a_cardToDisplay)
+    {
+        //if not at hand limit 
+
+        //get card to enable
+        //set card to enable data to card to display data
+        //run update visuals
+        //set enabled
+    }
+
+    public void RemoveCardToHandVisual(Card a_cardToRemove)
+    {
+
     }
 }

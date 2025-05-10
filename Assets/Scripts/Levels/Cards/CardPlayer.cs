@@ -20,7 +20,7 @@ public class CardPlayer : MonoBehaviour
     public void PlayCard(Card a_card)
     {
         a_card.PlayCard();
-        DeckManager.instance.hand.Remove(a_card);
+        DeckHandManager.instance.hand.Remove(a_card);
     }
 
     public void PlayCard(Card a_card, Vector3 a_position)
@@ -34,11 +34,11 @@ public class CardPlayer : MonoBehaviour
             a_card.PlayCard();
         }
 
-        DeckManager.instance.hand.Remove(a_card);
+        DeckHandManager.instance.hand.Remove(a_card);
     }
 
     public void DrawCard()
     {
-        DeckManager.instance.DrawCard();
+        DeckHandManager.instance.DrawCard();
     }
 }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DeckManager : MonoBehaviour
+public class DeckHandManager : MonoBehaviour
 {
-    public static DeckManager instance;
+    public static DeckHandManager instance;
 
     public List<Card> deck = new List<Card>();
     public List<Card> hand = new List<Card>();
@@ -37,6 +37,7 @@ public class DeckManager : MonoBehaviour
 
         Card drawnCard = deck[0];
         hand.Add(drawnCard);
+        CardHandDisplay.instance.AddCardToHandVisual(drawnCard); //update hand visuals
         deck.RemoveAt(0);
 
         //TODO visually add card here

@@ -6,6 +6,6 @@ public class LevelStateManager : MonoBehaviour
 {
     void Start()
     {
-        DeckManager.instance.StartGame();
+        DeckHandManager.instance.StartGame();
     }
 }

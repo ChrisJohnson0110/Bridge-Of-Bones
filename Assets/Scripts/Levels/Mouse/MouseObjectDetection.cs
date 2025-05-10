@@ -114,6 +114,8 @@ public class MouseObjectDetection : MonoBehaviour
         if (ClickedCard != null)
         {
             updateCardDisplayReference.UpdateFields(ClickedCard);
+            a_cardToHold.SetActive(true);
+            CardHandDisplay.instance.RemoveCardToHandVisual(ClickedCard);
         }
     }
 
@@ -123,6 +125,13 @@ public class MouseObjectDetection : MonoBehaviour
         {
             return;
         }
+
+        //where is mouse let go
+
+        //card action changes depending on position
+        Card ClickedCard = pickedupCard.GetComponent<Card>();
+        CardHandDisplay.instance.AddCardToHandVisual(ClickedCard);
+
 
         pickedupCard.SetActive(false);
     }
