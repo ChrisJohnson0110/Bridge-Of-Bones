@@ -7,7 +7,7 @@ using TMPro;
 //visualal update the display info on a card
 public class UpdateDisplayCard : MonoBehaviour
 {
-    public static UpdateDisplayCard instance;
+    public Card cardDisplayed;
 
     [SerializeField] private TMP_Text cardCost;
     [SerializeField] private TMP_Text cardName;
@@ -23,16 +23,10 @@ public class UpdateDisplayCard : MonoBehaviour
 
     [SerializeField] private TMP_Text cardCenterField;
 
-
-
-    private void Awake()
-    {
-        if (instance == null) instance = this;
-        else Destroy(gameObject);
-    }
-
     public void UpdateFields(Card a_cardData)
     {
+        cardDisplayed = a_cardData;
+
         cardCost.text = a_cardData.cost.ToString();
         cardName.text = a_cardData.cardName;
         cardImage.sprite = a_cardData.cardImage;
@@ -42,5 +36,17 @@ public class UpdateDisplayCard : MonoBehaviour
         //changes with type
         //cardLeftField.text = ;
         //cardRightField.text = ;
+    }
+
+    public bool CompareToCard(Card a_cardData)
+    {
+        if (cardDisplayed == a_cardData)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 }

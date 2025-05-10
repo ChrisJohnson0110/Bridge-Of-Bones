@@ -42,9 +42,9 @@ public class MouseObjectDetection : MonoBehaviour
                 //TODO 
             }
 
-            if (pickedupCard.activeSelf == true)
+            if (pickedupCard != null && pickedupCard.activeSelf == true)
             {
-                pickedupCard.transform.position = Input.mousePosition; //move display to mouse pos
+                //pickedupCard.transform.position = Input.mousePosition; //move display to mouse pos
             }
         }
     }
@@ -114,8 +114,8 @@ public class MouseObjectDetection : MonoBehaviour
         if (ClickedCard != null)
         {
             updateCardDisplayReference.UpdateFields(ClickedCard);
-            a_cardToHold.SetActive(true);
-            CardHandDisplay.instance.RemoveCardToHandVisual(ClickedCard);
+            pickedupCard.SetActive(true);
+            CardHandDisplay.instance.RemoveCardToHandVisual(ClickedCard); //remove card from hand
         }
     }
 
@@ -126,11 +126,14 @@ public class MouseObjectDetection : MonoBehaviour
             return;
         }
 
+        //TODO
+
         //where is mouse let go
 
         //card action changes depending on position
-        Card ClickedCard = pickedupCard.GetComponent<Card>();
-        CardHandDisplay.instance.AddCardToHandVisual(ClickedCard);
+
+        Card ClickedCard = pickedupCard.GetComponent<UpdateDisplayCard>().cardDisplayed;
+        CardHandDisplay.instance.AddCardToHandVisual(ClickedCard); //add card back to hand
 
 
         pickedupCard.SetActive(false);
@@ -139,7 +142,7 @@ public class MouseObjectDetection : MonoBehaviour
     //play the card held
     private void PlayCard()
     {
-        Card card = pickedupCard.GetComponent<Card>();
+        Card card = pickedupCard.GetComponent<UpdateDisplayCard>().cardDisplayed;
 
         if (card != null)
         {

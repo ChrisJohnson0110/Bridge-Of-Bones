@@ -9,7 +9,7 @@ public class DeckHandManager : MonoBehaviour
     public List<Card> deck = new List<Card>();
     public List<Card> hand = new List<Card>();
 
-    [SerializeField] private int handSize = 5;
+    public int handSize = 5;
 
     private void Awake()
     {
@@ -36,11 +36,12 @@ public class DeckHandManager : MonoBehaviour
         }
 
         Card drawnCard = deck[0];
+
+        drawnCard.cardID = Random.Range(-int.MaxValue, int.MaxValue).ToString();
+
         hand.Add(drawnCard);
         CardHandDisplay.instance.AddCardToHandVisual(drawnCard); //update hand visuals
         deck.RemoveAt(0);
-
-        //TODO visually add card here
     }
 
     public void StartGame()

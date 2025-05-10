@@ -7,8 +7,13 @@ public class CardPlayer : MonoBehaviour
 {
     public static CardPlayer instance;
 
-    [SerializeField] private GameObject _cardPrefab;
+    //[SerializeField] private GameObject _cardPrefab;
     //[SerializeField] private CardAnimator cardAnimator;
+
+    //TODO
+
+    // move this to deck hand manager
+    // this script is not needed
 
 
     void Awake()
