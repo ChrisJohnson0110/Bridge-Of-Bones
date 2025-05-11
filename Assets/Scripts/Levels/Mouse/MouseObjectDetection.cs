@@ -46,7 +46,7 @@ public class MouseObjectDetection : MonoBehaviour
 
             if (pickedupCard != null && pickedupCard.activeSelf == true)
             {
-                //pickedupCard.transform.position = Input.mousePosition; //move display to mouse pos
+                pickedupCard.transform.position = Input.mousePosition; //move display to mouse pos
             }
         }
     }
