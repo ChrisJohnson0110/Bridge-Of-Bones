@@ -47,12 +47,12 @@ public class CardHandDisplay : MonoBehaviour
     }
 
     //remove card from hand
-    public void RemoveCardToHandVisual(Card a_cardToRemove)
+    public void RemoveCardToHandVisual(GameObject a_cardToRemove)
     {
         foreach (GameObject go in handCards)
         {
             UpdateDisplayCard card = go.GetComponent<UpdateDisplayCard>();
-            if (card.CompareToCard(a_cardToRemove) == true)
+            if (a_cardToRemove == card.gameObject)
             {
                 go.SetActive(false);
                 cardsDisplayed--;

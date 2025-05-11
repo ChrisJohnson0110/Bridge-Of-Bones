@@ -526,9 +526,10 @@ MonoBehaviour:
   deck:
   - {fileID: 11400000, guid: 09cbef3e4cf76954da5cf1ec9325a5d2, type: 2}
   - {fileID: 11400000, guid: 09cbef3e4cf76954da5cf1ec9325a5d2, type: 2}
+  - {fileID: 11400000, guid: 206c22aa26755e14b962607d6026aed3, type: 2}
+  - {fileID: 11400000, guid: 206c22aa26755e14b962607d6026aed3, type: 2}
   - {fileID: 11400000, guid: 09cbef3e4cf76954da5cf1ec9325a5d2, type: 2}
-  - {fileID: 11400000, guid: 09cbef3e4cf76954da5cf1ec9325a5d2, type: 2}
-  - {fileID: 11400000, guid: 09cbef3e4cf76954da5cf1ec9325a5d2, type: 2}
+  - {fileID: 11400000, guid: 206c22aa26755e14b962607d6026aed3, type: 2}
   hand: []
   handSize: 5
 --- !u!4 &1256234020

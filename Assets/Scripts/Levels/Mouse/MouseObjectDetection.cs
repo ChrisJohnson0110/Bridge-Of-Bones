@@ -117,7 +117,7 @@ public class MouseObjectDetection : MonoBehaviour
         {
             updateCardDisplayReference.UpdateFields(ClickedCard);
             pickedupCard.SetActive(true);
-            CardHandDisplay.instance.RemoveCardToHandVisual(ClickedCard); //remove card from hand
+            CardHandDisplay.instance.RemoveCardToHandVisual(a_cardToHold); //remove card from hand
         }
     }
 
@@ -148,7 +148,7 @@ public class MouseObjectDetection : MonoBehaviour
 
         if (card != null)
         {
-            if (card.cardType == CardType.Unit)
+            if (card is SummonUnitCard)
             {
                 CardPlayer.instance.PlayCard(card, Input.mousePosition); //TODO this vector 3 needs to be matched up to a grid pos vector 3 //temp place holder to remember logic
             }

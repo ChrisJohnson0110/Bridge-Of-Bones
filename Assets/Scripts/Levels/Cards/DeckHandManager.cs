@@ -37,8 +37,6 @@ public class DeckHandManager : MonoBehaviour
 
         Card drawnCard = deck[0];
 
-        drawnCard.cardID = Random.Range(-int.MaxValue, int.MaxValue).ToString();
-
         hand.Add(drawnCard);
         CardHandDisplay.instance.AddCardToHandVisual(drawnCard); //update hand visuals
         deck.RemoveAt(0);
