@@ -18,10 +18,7 @@ public class CardHandDisplay : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-    }
 
-    private void Start()
-    {
         poolSize = DeckHandManager.instance.handSize;
 
         for (int i = 0; i < poolSize; i++)
@@ -38,7 +35,7 @@ public class CardHandDisplay : MonoBehaviour
     {
         if (poolSize <= cardsDisplayed)
         {
-            Debug.LogWarning("Hand is full");
+            Debug.LogWarning($"Hand is full {poolSize} & {cardsDisplayed}");
             return;
         }
 
@@ -46,6 +43,7 @@ public class CardHandDisplay : MonoBehaviour
         UpdateDisplayCard card = cardObj.GetComponent<UpdateDisplayCard>();
         card.UpdateFields(a_cardToDisplay);
         cardObj.SetActive(true);
+        cardsDisplayed++;
     }
 
     //remove card from hand
@@ -57,6 +55,7 @@ public class CardHandDisplay : MonoBehaviour
             if (card.CompareToCard(a_cardToRemove) == true)
             {
                 go.SetActive(false);
+                cardsDisplayed--;
                 break;
             }
         }

@@ -6,6 +6,15 @@ public class LevelStateManager : MonoBehaviour
 {
     void Start()
     {
+        
         DeckHandManager.instance.StartGame();
+        
+
+        //TODO
+
+        //create grid
+        //start wave spawning
+
+
     }
 }

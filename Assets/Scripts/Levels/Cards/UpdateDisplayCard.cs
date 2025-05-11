@@ -12,7 +12,7 @@ public class UpdateDisplayCard : MonoBehaviour
     [SerializeField] private TMP_Text cardCost;
     [SerializeField] private TMP_Text cardName;
     [SerializeField] private Image cardImage;
-    [SerializeField] private SpriteRenderer cardBackground;
+    [SerializeField] private Image cardBackground;
     [SerializeField] private TMP_Text cardDescription;
 
     //TODO

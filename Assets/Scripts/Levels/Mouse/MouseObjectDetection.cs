@@ -10,6 +10,7 @@ public class MouseObjectDetection : MonoBehaviour
     [SerializeField] private EventSystem eventSystem;
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject cardPrefab;
+    [SerializeField] private Transform cardCanvas;
 
     private GameObject pickedupCard;
     private MouseController mouseControllerRef;
@@ -17,6 +18,7 @@ public class MouseObjectDetection : MonoBehaviour
     private void Start()
     {
         pickedupCard = Instantiate(cardPrefab);
+        pickedupCard.transform.SetParent(cardCanvas);
         pickedupCard.SetActive(false);
         mouseControllerRef = MouseController.instance;
     }
@@ -108,7 +110,7 @@ public class MouseObjectDetection : MonoBehaviour
 
     private void HoldCardOnMouse(GameObject a_cardToHold)
     {
-        Card ClickedCard = a_cardToHold.GetComponent<Card>();
+        Card ClickedCard = a_cardToHold.GetComponent<UpdateDisplayCard>().cardDisplayed;
         UpdateDisplayCard updateCardDisplayReference = pickedupCard.GetComponent<UpdateDisplayCard>();
 
         if (ClickedCard != null)
