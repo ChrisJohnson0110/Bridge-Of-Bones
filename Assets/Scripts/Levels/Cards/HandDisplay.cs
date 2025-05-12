@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CardHandDisplay : MonoBehaviour
+public class HandDisplay : MonoBehaviour
 {
-    public static CardHandDisplay instance;
+    public static HandDisplay instance;
 
     [SerializeField] private GameObject handCardPrefab;
     [SerializeField] private Transform cardsParent;
@@ -42,6 +42,7 @@ public class CardHandDisplay : MonoBehaviour
         GameObject cardObj = GetFirstInactive();
         UpdateDisplayCard card = cardObj.GetComponent<UpdateDisplayCard>();
         card.UpdateFields(a_cardToDisplay);
+        cardObj.transform.SetAsLastSibling();
         cardObj.SetActive(true);
         cardsDisplayed++;
     }

@@ -38,7 +38,7 @@ public class DeckHandManager : MonoBehaviour
         Card drawnCard = deck[0];
 
         hand.Add(drawnCard);
-        CardHandDisplay.instance.AddCardToHandVisual(drawnCard); //update hand visuals
+        HandDisplay.instance.AddCardToHandVisual(drawnCard); //update hand visuals
         deck.RemoveAt(0);
     }
 

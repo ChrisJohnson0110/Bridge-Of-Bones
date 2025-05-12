@@ -117,7 +117,7 @@ public class MouseObjectDetection : MonoBehaviour
         {
             updateCardDisplayReference.UpdateFields(ClickedCard);
             pickedupCard.SetActive(true);
-            CardHandDisplay.instance.RemoveCardToHandVisual(a_cardToHold); //remove card from hand
+            HandDisplay.instance.RemoveCardToHandVisual(a_cardToHold); //remove card from hand
         }
     }
 
@@ -135,7 +135,7 @@ public class MouseObjectDetection : MonoBehaviour
         //card action changes depending on position
 
         Card ClickedCard = pickedupCard.GetComponent<UpdateDisplayCard>().cardDisplayed;
-        CardHandDisplay.instance.AddCardToHandVisual(ClickedCard); //add card back to hand
+        HandDisplay.instance.AddCardToHandVisual(ClickedCard); //add card back to hand
 
 
         pickedupCard.SetActive(false);
