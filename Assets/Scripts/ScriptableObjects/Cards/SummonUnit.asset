@@ -19,5 +19,5 @@ MonoBehaviour:
   cost: 2
   isUnlocked: 0
   unitPrefab: {fileID: 0}
-  attack: 15
-  health: 15
+  attackDmg: 5
+  totalHealth: 25

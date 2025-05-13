@@ -6,8 +6,8 @@ using UnityEngine;
 public class SummonUnitCard : UnitCard
 {
     public GameObject unitPrefab;
-    public int attack;
-    public int health;
+    public int attackDmg;
+    public int totalHealth;
     public override void PlayCard()
     {
 

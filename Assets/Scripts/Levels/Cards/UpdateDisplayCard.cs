@@ -20,7 +20,6 @@ public class UpdateDisplayCard : MonoBehaviour
     //need to enabble / disable and set based on card type
     [SerializeField] private TMP_Text cardLeftField;
     [SerializeField] private TMP_Text cardRightField;
-
     [SerializeField] private TMP_Text cardCenterField;
 
     public void UpdateFields(Card a_cardData)
@@ -33,10 +32,36 @@ public class UpdateDisplayCard : MonoBehaviour
         cardBackground.sprite = a_cardData.cardBackground;
         cardDescription.text = a_cardData.description;
 
-        //changes with type
-        //cardLeftField.text = ;
-        //cardRightField.text = ;
+        UpdateCardFieldsColor();
+
+        cardCenterField.gameObject.SetActive(false); // TODO set up fields and colors- hide center field as currently not used
+
+        if (a_cardData is SummonUnitCard summonUnitCard)
+        {
+            cardLeftField.text = summonUnitCard.attackDmg.ToString();
+            cardRightField.text = summonUnitCard.totalHealth.ToString();
+        }
+        else if (a_cardData is DrawCard drawCard)
+        {
+            cardLeftField.text = drawCard.drawAmount.ToString();
+            
+            if (drawCard.drawType == DrawType.SacrificeHPSet)
+            {
+                cardRightField.color = Color.red;
+                cardRightField.text = drawCard.otherAmount.ToString(); // TODO changes display depending on draw type 
+            }
+        }
+
+
     }
+
+    private void UpdateCardFieldsColor()
+    {
+        cardLeftField.color = Color.white;
+        cardRightField.color = Color.white;
+        cardCenterField.color = Color.white;
+    }
+
 
     public bool CompareToCard(Card a_cardData)
     {

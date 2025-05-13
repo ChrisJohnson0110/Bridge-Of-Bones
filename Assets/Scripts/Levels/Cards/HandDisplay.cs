@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//handle the displaying of cards within the players hand
 public class HandDisplay : MonoBehaviour
 {
     public static HandDisplay instance;
