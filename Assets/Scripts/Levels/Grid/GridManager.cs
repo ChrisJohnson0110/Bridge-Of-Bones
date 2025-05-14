@@ -52,6 +52,47 @@ public class GridManager : MonoBehaviour
         Debug.Log("Grid Generated using Grid class with " + (_gridWidth * _gridHeight) + " cells.");
     }
 
+    //add a unit to the grid
+    public void PlaceUnit(BaseUnit unit, Vector2Int a_targetTile)
+    {
+        GridTile cell = GetCell(a_targetTile);
+
+        if (cell == null)
+        {
+            Debug.LogWarning("Invalid tile position.");
+            return;
+        }
+
+        if (cell.IsPassableFor(unit))
+        {
+            cell.AddUnit(unit);
+            unit.transform.position = cell.worldPos;
+        }
+        else
+        {
+            Debug.LogWarning("Tile is not passable for " + unit.UnitName);
+        }
+    }
+
+    //move a unit on the grid
+    public void MoveUnit(BaseUnit unit, Vector2Int a_targetTile)
+    {
+        Vector2Int currentTile = new Vector2Int((int)unit.transform.position.x, (int)unit.transform.position.z);
+        GridTile currentCell = GetCell(currentTile);
+        GridTile targetCell = GetCell(a_targetTile);
+
+        if (currentCell != null)
+        {
+            currentCell.RemoveUnit(unit);
+        }
+
+        if (targetCell != null && targetCell.IsPassableFor(unit))
+        {
+            targetCell.AddUnit(unit);
+            unit.transform.position = targetCell.worldPos;
+        }
+    }
+
     // get the tile at a given position
     public GridTile GetCell(Vector2Int a_coordinates)
     {

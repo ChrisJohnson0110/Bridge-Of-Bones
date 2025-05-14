@@ -23,8 +23,8 @@ public class TestScenario : MonoBehaviour
         _oilSkeleton.Initialize(skeletonData);
 
         //place
-        UnitPlacement.instance.PlaceUnit(_archer, new Vector2Int(1,1));
-        UnitPlacement.instance.PlaceUnit(_oilSkeleton, new Vector2Int(1, 1));
+        GridManager.instance.PlaceUnit(_archer, new Vector2Int(1,1));
+        GridManager.instance.PlaceUnit(_oilSkeleton, new Vector2Int(1, 1));
     }
 
     void Update()
@@ -38,8 +38,8 @@ public class TestScenario : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.M))
         {
             Debug.Log("Moving Oil Barrel Skeleton to (5, 5)");
-            UnitPlacement.instance.MoveUnit(_oilSkeleton, new Vector2Int(5, 5)); // Testing move
-            //_oilSkeleton.Move();
+            GridManager.instance.MoveUnit(_oilSkeleton, new Vector2Int(5, 5)); // Testing move
+            // _oilSkeleton.Move(); 
         }
     }
 }

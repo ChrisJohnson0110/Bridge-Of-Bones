@@ -81,6 +81,7 @@ public abstract class BaseUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //TODO could move by taking a direction and amount
     //move unit
     public void Move(Vector2Int targetTile)
     {
