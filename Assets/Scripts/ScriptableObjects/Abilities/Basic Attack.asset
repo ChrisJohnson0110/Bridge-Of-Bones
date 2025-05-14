@@ -9,13 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964840693ad9d374f80431e3971a5a6d, type: 3}
-  m_Name: Arrow
+  m_Script: {fileID: 11500000, guid: c195fdcef098c814d954317feedc9811, type: 3}
+  m_Name: Basic Attack
   m_EditorClassIdentifier: 
-  AbilityName: Baisc Arrow
-  Range: 5
-  Damage: 10
-  conditonToApplyWithArrow:
-    State: 1
-    Duration: 3
-    IsTriggerable: 1
+  AbilityName: 
+  Range: 0
+  Damage: 0

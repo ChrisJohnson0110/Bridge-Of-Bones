@@ -9,16 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 58d7be4c75b88204ea84395c9c54a1b5, type: 3}
-  m_Name: Archer
+  m_Script: {fileID: 11500000, guid: 964840693ad9d374f80431e3971a5a6d, type: 3}
+  m_Name: FireArrow
   m_EditorClassIdentifier: 
-  UnitName: 
-  MaxHP: 0
-  Damage: 0
-  MoveSpeed: 0
-  Range: 0
-  IsFlying: 0
-  IsStationary: 0
-  OccupiedTiles: []
-  BasicAttack: {fileID: 0}
-  SpecialAbility: {fileID: 0}
+  AbilityName: Baisc Arrow
+  Range: 5
+  Damage: 10
+  conditonToApplyWithArrow:
+    State: 1
+    Duration: 3
+    IsTriggerable: 1
