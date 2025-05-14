@@ -5,13 +5,16 @@ using System.Linq;
 
 public class GridTile
 {
-    public Vector2Int tileCoordinates { get; private set; }
-    public Vector3 worldPos { get; private set; }
-    public float tileHeight { get; private set; }
-    public bool IsLandPassable { get; set; }
-    public bool IsAirPassable { get; set; }
-    public List<BaseUnit> UnitsOccupyingTile { get; private set; }
-    public List<TileCondition> tileConditions { get; private set; }
+    public Vector2Int tileCoordinates { get; private set; } // tile coords
+    public Vector3 worldPos { get; private set; } // position within the scene
+    public float tileHeight { get; private set; } // height of the tile
+    public bool IsLandPassable { get; set; } // can be passed by land units
+    public bool IsAirPassable { get; set; } //can be passed by air units
+    public List<BaseUnit> UnitsOccupyingTile { get; private set; } // list of units on tile
+    public List<TileCondition> tileConditions { get; private set; } // status conditions on tile
+    public float TotalOccupiedSpace { get; private set; }  // total space occupied on the tile
+    public float MaxTileSpace { get; private set; }  // max available space per tile
+
 
     //constructor //tile setup
     public GridTile(Vector2Int a_coordinates, Vector3 a_worldPosition, float a_height, bool a_isLandPassable, bool a_isAirPassable)
@@ -24,23 +27,39 @@ public class GridTile
 
         UnitsOccupyingTile = new List<BaseUnit>();
         tileConditions = new List<TileCondition>();
+
+        TotalOccupiedSpace = 0f;  
+        MaxTileSpace = 1f;
+
     }
 
     //add a unit to this tile
-    public void AddUnit(BaseUnit a_unit)
+    public bool AddUnit(BaseUnit a_unit)
     {
-        if (UnitsOccupyingTile.Contains(a_unit) == false)
+        if (TotalOccupiedSpace + a_unit.SpaceOccupied <= MaxTileSpace)  // Check if there's enough space
         {
             UnitsOccupyingTile.Add(a_unit);
+            TotalOccupiedSpace += a_unit.SpaceOccupied;  // Increase occupied space by the unit's space
+            return true;  // Successfully added the unit
+        }
+        else
+        {
+            Debug.LogWarning($"Not enough space to add unit to tile {tileCoordinates}");
+            return false;  // Not enough space
         }
     }
 
     //remove a unit from this tile
     public void RemoveUnit(BaseUnit a_unit)
     {
-        UnitsOccupyingTile.Remove(a_unit);
+        if (UnitsOccupyingTile.Contains(a_unit))
+        {
+            UnitsOccupyingTile.Remove(a_unit);
+            TotalOccupiedSpace -= a_unit.SpaceOccupied;  // Decrease occupied space by the units space
+        }
     }
 
+    //add a status condition to the tile
     public void AddCondition(TileCondition a_condition)
     {
         tileConditions.Add(a_condition);
@@ -88,6 +107,9 @@ public class GridTile
         //for each status effect check if it matches onfire then coveredin oil
         bool isOnFire = tileConditions.Any(c => c.State == TileState.OnFire);
         bool isOilPresent = tileConditions.Any(c => c.State == TileState.CoveredInOil);
+
+        bool isFrozen = tileConditions.Any(c => c.State == TileState.Frozen);
+        bool isElectrified = tileConditions.Any(c => c.State == TileState.Electrified);
 
         if (isOnFire == true && isOilPresent == true)
         {
