@@ -6,7 +6,7 @@ public class TestScenario : MonoBehaviour
 {
     [SerializeField] private GameObject archerPrefab;
     [SerializeField] private GameObject skeletonPrefab;
-    [SerializeField] private FireArrow fireArrowAbility;
+    [SerializeField] private BasicArrow fireArrowAbility;
 
     private BaseUnit _archer;
     private BaseUnit _oilSkeleton;

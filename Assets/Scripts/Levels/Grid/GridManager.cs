@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-//handle grid creation
+//grid creation and management
 public class GridManager : MonoBehaviour
 {
     public static GridManager instance;
@@ -21,7 +21,8 @@ public class GridManager : MonoBehaviour
         if (instance == null) instance = this;
         else Destroy(gameObject);
 
-        GenerateGrid();
+        GenerateGrid(); //create the grid
+        InvokeRepeating("UpdateTileConditions", 0f, 1f);// update status conditions every second / every tick
     }
 
     public void GenerateGrid()

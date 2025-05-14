@@ -21,6 +21,6 @@ public class HandleGridInteractions : MonoBehaviour
             Debug.Log($"{unit.UnitName} takes 50 damage from explosion!");
         }
         //remove status effects
-        a_gridTile.tileConditions.RemoveAll(c => c.State == TileState.CoveredInOil);
+        a_gridTile.tileConditions.RemoveAll(c => c.State == TileStatus.CoveredInOil);
     }
 }

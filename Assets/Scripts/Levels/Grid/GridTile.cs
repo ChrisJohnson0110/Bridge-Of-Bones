@@ -105,11 +105,11 @@ public class GridTile
     private void CheckForTileInteractions()
     {
         //for each status effect check if it matches onfire then coveredin oil
-        bool isOnFire = tileConditions.Any(c => c.State == TileState.OnFire);
-        bool isOilPresent = tileConditions.Any(c => c.State == TileState.CoveredInOil);
+        bool isOnFire = tileConditions.Any(c => c.State == TileStatus.OnFire);
+        bool isOilPresent = tileConditions.Any(c => c.State == TileStatus.CoveredInOil);
 
-        bool isFrozen = tileConditions.Any(c => c.State == TileState.Frozen);
-        bool isElectrified = tileConditions.Any(c => c.State == TileState.Electrified);
+        bool isFrozen = tileConditions.Any(c => c.State == TileStatus.Frozen);
+        bool isElectrified = tileConditions.Any(c => c.State == TileStatus.Electrified);
 
         if (isOnFire == true && isOilPresent == true)
         {
