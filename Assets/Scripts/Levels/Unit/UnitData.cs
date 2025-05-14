@@ -5,6 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Unit", menuName = "Units/Unit Data")]
 public class UnitData : ScriptableObject
 {
+    //TODO add some form of cooldown ?
     [Header("Unit Attributes")]
     public string UnitName;
     public float MaxHP;

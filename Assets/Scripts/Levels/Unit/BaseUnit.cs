@@ -5,20 +5,20 @@ using UnityEngine;
 public abstract class BaseUnit : MonoBehaviour
 {
     [Header("Unit")]
-    public string UnitName;
-    public float MaxHP;
-    public float CurrentHP;
-    public float Damage;
-    public float MoveSpeed;
-    public float Range;
-    public bool IsFlying;
-    public bool IsStationary;
+    public string unitName;
+    public float maxHP;
+    public float currentHP;
+    public float damage;
+    public float moveSpeed;
+    public float range;
+    public bool isFlying;
+    public bool isStationary;
     [Space(5)]
-    public Vector2Int OccupiedTilesSize;
-    public float SpaceOccupied; //amount of tile space the unit takes
+    public Vector2Int occupiedTilesSize; //1x1 is a normal uinit it takes up one tile, bosses/elietes would take 2x2 or more
+    public float spaceOccupied; //amount of tile space the unit takes
     [Space(5)]
-    public AbilityBase BasicAttack; // normal attack
-    public AbilityBase SpecialAbility; // TODO might remove unsure
+    public AbilityBase basicAttack; // normal attack
+    public AbilityBase specialAbility; // TODO might remove unsure
 
 
     private UnitData unitData; // unit data
@@ -34,18 +34,18 @@ public abstract class BaseUnit : MonoBehaviour
         if (unitData != null)
         {
             // Initialize the unit's attributes from UnitData
-            UnitName = unitData.UnitName;
-            MaxHP = unitData.MaxHP;
-            CurrentHP = MaxHP;
-            Damage = unitData.Damage;
-            MoveSpeed = unitData.MoveSpeed;
-            Range = unitData.Range;
-            IsFlying = unitData.IsFlying;
-            IsStationary = unitData.IsStationary;
-            OccupiedTilesSize = unitData.OccupiedTilesSize;
-            SpaceOccupied = unitData.SpaceOccupied;
-            BasicAttack = unitData.BasicAttack;
-            SpecialAbility = unitData.SpecialAbility;
+            unitName = unitData.UnitName;
+            maxHP = unitData.MaxHP;
+            currentHP = maxHP;
+            damage = unitData.Damage;
+            moveSpeed = unitData.MoveSpeed;
+            range = unitData.Range;
+            isFlying = unitData.IsFlying;
+            isStationary = unitData.IsStationary;
+            occupiedTilesSize = unitData.OccupiedTilesSize;
+            spaceOccupied = unitData.SpaceOccupied;
+            basicAttack = unitData.BasicAttack;
+            specialAbility = unitData.SpecialAbility;
             unitPrefab = unitData.unitPrefab;
 
             // Check for an Animator component in the unitPrefab
@@ -67,8 +67,8 @@ public abstract class BaseUnit : MonoBehaviour
     //when unit takes damage
     public virtual void TakeDamage(float amount)
     {
-        CurrentHP -= amount;
-        if (CurrentHP <= 0)
+        currentHP -= amount;
+        if (currentHP <= 0)
         {
             Die();
         }
@@ -77,7 +77,7 @@ public abstract class BaseUnit : MonoBehaviour
     //what happens when a unit dies
     protected virtual void Die()
     {
-        Debug.Log($"{UnitName} has been destroyed.");
+        Debug.Log($"{unitName} has been destroyed.");
         Destroy(gameObject);
     }
 
@@ -105,11 +105,12 @@ public abstract class BaseUnit : MonoBehaviour
         animator.SetBool("isRunning", false);
     }
 
+    //attack a target
     public virtual void PerformBasicAttack(BaseUnit target)
     {
-        if (BasicAttack != null)
+        if (basicAttack != null)
         {
-            BasicAttack.Execute(this, target);
+            basicAttack.Execute(this, target);
             animator.SetBool("isAttacking", true);
             Invoke(nameof(ResetAttack), 1f); //attack cooldown
         }
@@ -122,9 +123,9 @@ public abstract class BaseUnit : MonoBehaviour
 
     public virtual void PerformSpecialAbility(BaseUnit target)
     {
-        if (SpecialAbility != null)
+        if (specialAbility != null)
         {
-            SpecialAbility.Execute(this, target);
+            specialAbility.Execute(this, target);
         }
     }
 }

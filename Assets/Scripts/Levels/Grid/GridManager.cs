@@ -70,7 +70,7 @@ public class GridManager : MonoBehaviour
         }
         else
         {
-            Debug.LogWarning("Tile is not passable for " + unit.UnitName);
+            Debug.LogWarning("Tile is not passable for " + unit.unitName);
         }
     }
 

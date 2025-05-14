@@ -36,10 +36,10 @@ public class GridTile
     //add a unit to this tile
     public bool AddUnit(BaseUnit a_unit)
     {
-        if (TotalOccupiedSpace + a_unit.SpaceOccupied <= MaxTileSpace)  // Check if there's enough space
+        if (TotalOccupiedSpace + a_unit.spaceOccupied <= MaxTileSpace)  // Check if there's enough space
         {
             UnitsOccupyingTile.Add(a_unit);
-            TotalOccupiedSpace += a_unit.SpaceOccupied;  // Increase occupied space by the unit's space
+            TotalOccupiedSpace += a_unit.spaceOccupied;  // Increase occupied space by the unit's space
             return true;  // Successfully added the unit
         }
         else
@@ -55,7 +55,7 @@ public class GridTile
         if (UnitsOccupyingTile.Contains(a_unit))
         {
             UnitsOccupyingTile.Remove(a_unit);
-            TotalOccupiedSpace -= a_unit.SpaceOccupied;  // Decrease occupied space by the units space
+            TotalOccupiedSpace -= a_unit.spaceOccupied;  // Decrease occupied space by the units space
         }
     }
 
@@ -91,7 +91,7 @@ public class GridTile
     //get if this tile is passable
     public bool IsPassableFor(BaseUnit a_unit)
     {
-        if (a_unit.IsFlying == true)
+        if (a_unit.isFlying == true)
         {
             return IsAirPassable;
         }

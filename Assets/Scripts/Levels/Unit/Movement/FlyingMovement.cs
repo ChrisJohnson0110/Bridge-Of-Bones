@@ -13,9 +13,9 @@ public class FlyingMovement : MonoBehaviour, IMovable
 
     public void Move(Vector2Int targetTile)
     {
-        if (!unit.IsStationary)
+        if (!unit.isStationary)
         {
-            Debug.Log($"{unit.UnitName} flies to {targetTile}");
+            Debug.Log($"{unit.unitName} flies to {targetTile}");
         }
     }
 }

@@ -7,18 +7,11 @@ public class BasicArrow : AbilityBase
 {
     [SerializeField] private TileCondition conditonToApplyWithArrow;
 
-    private void Awake()
-    {
-        AbilityName = "Baisc Arrow";
-        Range = 5f;
-        Damage = 10;
-    }
-
     public override void Execute(BaseUnit source, BaseUnit target)
     {
         //deal damage
 
-        Debug.Log($"{source.UnitName} shoots an arrow at {target.UnitName}");
+        Debug.Log($"{source.unitName} shoots an arrow at {target.unitName}");
         target.TakeDamage(Damage);
 
         // set the tiles status effect

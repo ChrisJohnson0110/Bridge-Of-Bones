@@ -22,7 +22,7 @@ public class OilBarrelSkeleton : BaseUnit
 
     private void Explode()
     {
-        Debug.Log($"{UnitName} explodes, causing an area of effect explosion!");
+        Debug.Log($"{unitName} explodes, causing an area of effect explosion!");
 
         Vector2Int currentTile = new Vector2Int((int)transform.position.x, (int)transform.position.z);
         List<GridTile> adjacentCells = GridManager.instance.GetAdjacentCells(currentTile);
@@ -32,7 +32,7 @@ public class OilBarrelSkeleton : BaseUnit
             foreach (BaseUnit unit in cell.UnitsOccupyingTile)
             {
                 unit.TakeDamage(30);
-                Debug.Log($"{unit.UnitName} takes 30 damage from the explosion!");
+                Debug.Log($"{unit.unitName} takes 30 damage from the explosion!");
             }
         }
 

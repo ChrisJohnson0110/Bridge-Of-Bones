@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//base class for ability stats
 public abstract class AbilityBase : ScriptableObject
 {
     public string AbilityName;

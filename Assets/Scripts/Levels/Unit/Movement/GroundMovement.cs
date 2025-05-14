@@ -13,10 +13,10 @@ public class GroundMovement : MonoBehaviour, IMovable
 
     public void Move(Vector2Int targetTile)
     {
-        if (!unit.IsStationary)
+        if (!unit.isStationary)
         {
             // Implement ground movement logic here
-            Debug.Log($"{unit.UnitName} moves to {targetTile}");
+            Debug.Log($"{unit.unitName} moves to {targetTile}");
         }
     }
 }
