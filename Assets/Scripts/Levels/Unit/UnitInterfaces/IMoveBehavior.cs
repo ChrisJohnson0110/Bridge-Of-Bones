@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IMovable
+public interface IMoveBehavior
 {
-    void Move(Vector2Int targetTile);
+    void Move(BaseUnit unit, Vector2Int targetTile);
 }

@@ -20,8 +20,6 @@ public abstract class BaseUnit : MonoBehaviour
     public AbilityBase basicAttack; // normal attack
     public AbilityBase specialAbility; // TODO might remove unsure
 
-
-    private UnitData unitData; // unit data
     private  GameObject unitPrefab; // unit prefab
 
     protected Animator animator;
@@ -29,7 +27,7 @@ public abstract class BaseUnit : MonoBehaviour
     //initialize unit data
     public void Initialize(UnitData a_unitData)
     {
-        unitData = a_unitData;
+        UnitData unitData = a_unitData;
 
         if (unitData != null)
         {
@@ -89,8 +87,15 @@ public abstract class BaseUnit : MonoBehaviour
         Debug.Log($"{gameObject.name} is moving to {targetTile}");
         animator.SetBool("isRunning", true);
 
+        OnMove(targetTile);
+
         // Simulate a move (you would implement actual movement logic here)
         StartCoroutine(MoveToPosition(new Vector3(targetTile.x, 0, targetTile.y)));
+    }
+
+    //check when moving 
+    protected virtual void OnMove(Vector2Int newTile)
+    {
     }
 
     private System.Collections.IEnumerator MoveToPosition(Vector3 targetPosition)
@@ -112,7 +117,7 @@ public abstract class BaseUnit : MonoBehaviour
         {
             basicAttack.Execute(this, target);
             animator.SetBool("isAttacking", true);
-            Invoke(nameof(ResetAttack), 1f); //attack cooldown
+            Invoke(nameof(ResetAttack), 1f); //attack animation cooldown
         }
     }
 

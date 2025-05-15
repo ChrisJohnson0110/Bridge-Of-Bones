@@ -5,7 +5,7 @@ using System.Linq;
 
 public class OilBarrelSkeleton : BaseUnit
 {
-    private void OnMove(Vector2Int newTile)
+    protected override void OnMove(Vector2Int newTile)
     {
         GridTile cell = GridManager.instance.GetCell(newTile);
 
