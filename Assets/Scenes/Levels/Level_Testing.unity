@@ -232,8 +232,8 @@ GameObject:
   m_Component:
   - component: {fileID: 481938126}
   - component: {fileID: 481938125}
-  - component: {fileID: 481938124}
   - component: {fileID: 481938123}
+  - component: {fileID: 481938127}
   m_Layer: 0
   m_Name: Grid
   m_TagString: Untagged
@@ -255,18 +255,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   archerData: {fileID: 11400000, guid: 296a1a1a4a987824995e7363429740cd, type: 2}
   skeletonData: {fileID: 11400000, guid: 3b72d7019fb606a46a81fe8599fd5c96, type: 2}
---- !u!114 &481938124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 481938122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3559d0cc121b2bd4cbecc2c314ad2413, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &481938125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +286,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &481938127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481938122}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd3f8231a2658eb469982cdadb3c98b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allUnits: []
 --- !u!1 &523062698
 GameObject:
   m_ObjectHideFlags: 0
@@ -547,14 +548,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 811312268}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.4764409, y: -0, z: -0, w: 0.87920654}
+  m_LocalPosition: {x: 3.53, y: 8.8, z: -3.19}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 56.906, y: 0, z: 0}
 --- !u!1 &1256234017
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,7 +758,7 @@ GameObject:
   - component: {fileID: 1688081601}
   - component: {fileID: 1688081600}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Canvas_Cards
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

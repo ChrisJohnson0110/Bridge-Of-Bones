@@ -39,7 +39,8 @@ public class GridManager : MonoBehaviour
 
                 Vector3 worldPosition = new Vector3(x * _cellSize, 0, y * _cellSize);
 
-                Instantiate(_tilePrefab, worldPosition, Quaternion.identity);  // Create tile visuals
+                GameObject tile = Instantiate(_tilePrefab, worldPosition, Quaternion.identity);  // Create tile visuals
+                tile.name = worldPosition.ToString();
             }
         }
 

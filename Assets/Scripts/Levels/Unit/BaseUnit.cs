@@ -5,6 +5,7 @@ using UnityEngine;
 public abstract class BaseUnit : MonoBehaviour
 {
     //TODO need to check within ability if unit should be only attacking within its lane // need to add that to the baseunit SO
+    //movement needs to check to next tile with gridmanager before moving
 
     [Header("Unit")]
     public string unitName;
