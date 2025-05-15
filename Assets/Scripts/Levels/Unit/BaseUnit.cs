@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class BaseUnit : MonoBehaviour
 {
+    //TODO need to check within ability if unit should be only attacking within its lane // need to add that to the baseunit SO
+
     [Header("Unit")]
     public string unitName;
     public float maxHP;
@@ -19,10 +21,6 @@ public abstract class BaseUnit : MonoBehaviour
     public Vector2Int occupiedTilePosition; //units positon  /TODO ensure getting used
     [Space(5)]
     public AbilityBase basicAttack; // normal attack
-
-    [Header("Unit Behaviors")]
-    public IMoveBehavior moveBehavior;
-    public IAttackBehavior attackBehavior;
 
     private  GameObject unitPrefab; // unit prefab
 
@@ -82,6 +80,34 @@ public abstract class BaseUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //place this unit on the grid
+    public void PlaceUnit(Vector2Int a_targetTile)
+    {
+        if (occupiedTilePosition != null) //return if already has a tile pos
+        {
+            return;
+        }
+
+        GridTile cell = GridManager.instance.GetCell(a_targetTile);
+
+        if (cell == null)
+        {
+            Debug.LogWarning("Invalid tile position.");
+            return;
+        }
+
+        if (cell.IsPassableFor(this))
+        {
+            cell.AddUnit(this);
+            this.transform.position = cell.worldPos;
+            this.occupiedTilePosition = a_targetTile;
+        }
+        else
+        {
+            Debug.LogWarning("Tile is not passable for " + this.unitName);
+        }
+    }
+
     //move unit
     public void Move(Vector2Int targetTile)
     {
@@ -92,7 +118,7 @@ public abstract class BaseUnit : MonoBehaviour
         OnMove(targetTile);
 
         // Simulate a move (you would implement actual movement logic here)
-        StartCoroutine(MoveToPosition(new Vector3(targetTile.x, 0, targetTile.y)));
+        StartCoroutine(MoveToPosition(targetTile));
     }
 
     //check when moving 
@@ -100,8 +126,10 @@ public abstract class BaseUnit : MonoBehaviour
     {
     }
 
-    private System.Collections.IEnumerator MoveToPosition(Vector3 targetPosition)
+    private System.Collections.IEnumerator MoveToPosition(Vector2Int targetTile)
     {
+        Vector3 targetPosition = new Vector3(targetTile.x, 0, targetTile.y);
+
         float speed = 2f;
         while (Vector3.Distance(transform.position, targetPosition) > 0.1f)
         {
@@ -110,9 +138,21 @@ public abstract class BaseUnit : MonoBehaviour
         }
 
         animator.SetBool("isRunning", false);
+        occupiedTilePosition = targetTile;
     }
 
-    //attack a target
+    //attack target/s //multiple targets
+    public virtual void PerformBasicAttack(List<BaseUnit> target)
+    {
+        if (basicAttack != null)
+        {
+            basicAttack.Execute(this, target);
+            animator.SetBool("isAttacking", true);
+            Invoke(nameof(ResetAttack), 1f); //attack animation cooldown
+        }
+    }
+
+    //attack target //single target
     public virtual void PerformBasicAttack(BaseUnit target)
     {
         if (basicAttack != null)
@@ -121,6 +161,11 @@ public abstract class BaseUnit : MonoBehaviour
             animator.SetBool("isAttacking", true);
             Invoke(nameof(ResetAttack), 1f); //attack animation cooldown
         }
+    }
+
+    //check when attacking
+    protected virtual void OnAttack()
+    {
     }
 
     private void ResetAttack()

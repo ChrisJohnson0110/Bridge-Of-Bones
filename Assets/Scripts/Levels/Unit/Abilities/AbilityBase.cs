@@ -10,5 +10,6 @@ public abstract class AbilityBase : ScriptableObject
     public float damage;
     public float speed;
 
+    public abstract void Execute(BaseUnit source, List<BaseUnit> target);
     public abstract void Execute(BaseUnit source, BaseUnit target);
 }

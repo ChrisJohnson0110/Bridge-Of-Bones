@@ -64,6 +64,7 @@ public class GridManager : MonoBehaviour
         {
             cell.AddUnit(unit);
             unit.transform.position = cell.worldPos;
+            unit.occupiedTilePosition = a_targetTile;
         }
         else
         {
@@ -87,6 +88,7 @@ public class GridManager : MonoBehaviour
         {
             targetCell.AddUnit(unit);
             unit.transform.position = targetCell.worldPos;
+            unit.occupiedTilePosition = a_targetTile;
         }
     }
 

@@ -23,11 +23,11 @@ public class UnitController : MonoBehaviour
 
     private void EvaluateUnitAction(BaseUnit unit)
     {
-        BaseUnit target = FindTargetInRange(unit);
+        List<BaseUnit> targets = FindTargetInRange(unit);
 
-        if (target != null)
+        if (targets != null)
         {
-            unit.PerformBasicAttack(target);
+            unit.PerformBasicAttack(targets);
         }
         else
         {
@@ -36,8 +36,10 @@ public class UnitController : MonoBehaviour
         }
     }
 
-    private BaseUnit FindTargetInRange(BaseUnit unit)
+    private List<BaseUnit> FindTargetInRange(BaseUnit unit)
     {
+        List<BaseUnit> baseUnitsWithinRange = new List<BaseUnit>();
+
         foreach (BaseUnit otherUnit in allUnits)
         {
             if (otherUnit != unit)
@@ -46,11 +48,12 @@ public class UnitController : MonoBehaviour
 
                 if (distance <= unit.range)
                 {
-                    return otherUnit;
+                    baseUnitsWithinRange.Add(otherUnit);
                 }
             }
         }
-        return null;
+
+        return baseUnitsWithinRange;
     }
 
     private Vector2Int DetermineNextTile(BaseUnit unit)
