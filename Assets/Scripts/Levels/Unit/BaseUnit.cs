@@ -10,15 +10,19 @@ public abstract class BaseUnit : MonoBehaviour
     public float currentHP;
     public float damage;
     public float moveSpeed;
-    public float range;
+    public int range;
     public bool isFlying;
-    public bool isStationary;
+    public bool isStationary; //should probably remove
     [Space(5)]
     public Vector2Int occupiedTilesSize; //1x1 is a normal uinit it takes up one tile, bosses/elietes would take 2x2 or more
     public float spaceOccupied; //amount of tile space the unit takes
+    public Vector2Int occupiedTilePosition; //units positon  /TODO ensure getting used
     [Space(5)]
     public AbilityBase basicAttack; // normal attack
-    public AbilityBase specialAbility; // TODO might remove unsure
+
+    [Header("Unit Behaviors")]
+    public IMoveBehavior moveBehavior;
+    public IAttackBehavior attackBehavior;
 
     private  GameObject unitPrefab; // unit prefab
 
@@ -43,7 +47,6 @@ public abstract class BaseUnit : MonoBehaviour
             occupiedTilesSize = unitData.OccupiedTilesSize;
             spaceOccupied = unitData.SpaceOccupied;
             basicAttack = unitData.BasicAttack;
-            specialAbility = unitData.SpecialAbility;
             unitPrefab = unitData.unitPrefab;
 
             // Check for an Animator component in the unitPrefab
@@ -79,7 +82,6 @@ public abstract class BaseUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
-    //TODO could move by taking a direction and amount
     //move unit
     public void Move(Vector2Int targetTile)
     {
@@ -124,13 +126,5 @@ public abstract class BaseUnit : MonoBehaviour
     private void ResetAttack()
     {
         animator.SetBool("isAttacking", false);
-    }
-
-    public virtual void PerformSpecialAbility(BaseUnit target)
-    {
-        if (specialAbility != null)
-        {
-            specialAbility.Execute(this, target);
-        }
     }
 }

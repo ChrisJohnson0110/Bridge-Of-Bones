@@ -12,7 +12,7 @@ public class BasicArrow : AbilityBase
         //deal damage
 
         Debug.Log($"{source.unitName} shoots an arrow at {target.unitName}");
-        target.TakeDamage(Damage);
+        target.TakeDamage(damage);
 
         // set the tiles status effect
 

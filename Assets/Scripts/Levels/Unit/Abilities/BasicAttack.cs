@@ -7,7 +7,7 @@ public class BasicAttack : AbilityBase
 {
     public override void Execute(BaseUnit source, BaseUnit target)
     {
-        Debug.Log($"{source.unitName} attacks {target.unitName} for {Damage} damage.");
-        target.TakeDamage(Damage);
+        Debug.Log($"{source.unitName} attacks {target.unitName} for {damage} damage.");
+        target.TakeDamage(damage);
     }
 }

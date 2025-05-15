@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class UnitController : MonoBehaviour
 {
+    public static UnitController instance;
     public List<BaseUnit> allUnits = new List<BaseUnit>();
 
-    void Update()
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
+
+    public void Tick()
     {
         foreach (BaseUnit unit in allUnits)
         {
@@ -16,44 +23,38 @@ public class UnitController : MonoBehaviour
 
     private void EvaluateUnitAction(BaseUnit unit)
     {
-        // Check for targets in range
         BaseUnit target = FindTargetInRange(unit);
 
         if (target != null)
         {
-            unit.ExecuteAttack(target);
+            unit.PerformBasicAttack(target);
         }
         else
         {
-            // If no target, decide where to move
             Vector2Int nextTile = DetermineNextTile(unit);
-            unit.ExecuteMove(nextTile);
+            unit.Move(nextTile);
         }
     }
 
     private BaseUnit FindTargetInRange(BaseUnit unit)
     {
-        float range = unit.range;
-
         foreach (BaseUnit otherUnit in allUnits)
         {
             if (otherUnit != unit)
             {
                 float distance = Vector2Int.Distance(unit.occupiedTilePosition, otherUnit.occupiedTilePosition);
 
-                if (distance <= range)
+                if (distance <= unit.range)
                 {
                     return otherUnit;
                 }
             }
         }
-
         return null;
     }
 
     private Vector2Int DetermineNextTile(BaseUnit unit)
     {
-        // Placeholder: Move forward one tile
-        return unit.occupiedTilePosition + Vector2Int.up;
+        return unit.occupiedTilePosition + Vector2Int.up; // Move forward by default
     }
 }

@@ -4,5 +4,5 @@ using UnityEngine;
 
 public interface IAttackBehavior
 {
-    void Attack(BaseUnit unit, BaseUnit target);
+    void Attack(BaseUnit unit, List<BaseUnit> target, AbilityBase ability);
 }

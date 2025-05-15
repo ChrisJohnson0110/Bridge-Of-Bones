@@ -11,7 +11,7 @@ public class UnitData : ScriptableObject
     public float MaxHP;
     public float Damage;
     public float MoveSpeed;
-    public float Range;
+    public int Range;
     public bool IsFlying;
     public bool IsStationary;
     public Vector2Int OccupiedTilesSize;
@@ -19,7 +19,6 @@ public class UnitData : ScriptableObject
 
     [Header("Abilities")]
     public AbilityBase BasicAttack; // normal attack
-    public AbilityBase SpecialAbility; // optional special ability
 
     public GameObject unitPrefab; //units model
 }

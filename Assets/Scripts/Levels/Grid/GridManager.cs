@@ -20,9 +20,6 @@ public class GridManager : MonoBehaviour
     {
         if (instance == null) instance = this;
         else Destroy(gameObject);
-
-        GenerateGrid(); //create the grid
-        InvokeRepeating("UpdateTileConditions", 0f, 1f);// update status conditions every second / every tick
     }
 
     public void GenerateGrid()
