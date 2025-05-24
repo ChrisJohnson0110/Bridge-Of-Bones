@@ -6,6 +6,7 @@ using UnityEngine;
 public class BasicArrow : AbilityBase
 {
     [SerializeField] private TileCondition conditonToApplyWithArrow;
+    //variable to look at
 
     public override void Execute(BaseUnit a_source, List<BaseUnit> a_targets)
     {

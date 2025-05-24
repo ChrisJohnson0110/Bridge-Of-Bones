@@ -23,9 +23,17 @@ public abstract class BaseUnit : MonoBehaviour
     [Space(5)]
     public AbilityBase basicAttack; // normal attack
 
-    private  GameObject unitPrefab; // unit prefab
+    private GameObject unitPrefab; // unit prefab
 
     protected Animator animator;
+
+    //TODO
+
+    //public BaseUnit(UnitData a_unitData)
+    //{
+
+    //}
+
 
     //initialize unit data
     public void Initialize(UnitData a_unitData)
@@ -81,6 +89,7 @@ public abstract class BaseUnit : MonoBehaviour
         Destroy(gameObject);
     }
 
+    //TODO remove
     //place this unit on the grid
     public void PlaceUnit(Vector2Int a_targetTile)
     {
@@ -119,7 +128,7 @@ public abstract class BaseUnit : MonoBehaviour
         OnMove(targetTile);
 
         // Simulate a move (you would implement actual movement logic here)
-        StartCoroutine(MoveToPosition(targetTile));
+        StartCoroutine(MoveToPosition(targetTile)); //TODO overridable
     }
 
     //check when moving 

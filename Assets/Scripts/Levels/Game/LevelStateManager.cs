@@ -6,7 +6,6 @@ public class LevelStateManager : MonoBehaviour
 {
     void Start()
     {
-        
         DeckHandManager.instance.StartGame();
         GridManager.instance.GenerateGrid();
         InvokeRepeating("GameTick", 0f, 1f);// update status conditions every second / every tick
